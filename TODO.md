@@ -5,7 +5,7 @@
 - [x] add API call to JSON Server,
 - [x] add Cache,
 - [x] add Virtualization,
-- [ ] add chakra-ui,
+- [x] add chakra-ui,
 - [ ] build card component for main page,
 - [ ] build details page,
 - [ ] check RWD between pages,

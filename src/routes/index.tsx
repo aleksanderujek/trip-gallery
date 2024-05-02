@@ -1,6 +1,8 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import TripCard from '../components/TripCard';
+import { useBreakpointValue } from '@chakra-ui/react';
 
 const fetchTrips = async () => {
     const response = await fetch(
@@ -22,17 +24,30 @@ export const Route = createFileRoute('/')({
 function Index() {
     const data = Route.useLoaderData();
     const listRef = useRef<HTMLDivElement>(null);
-    console.log(data);
-    const columnCount = 3;
+    const columnCount = useBreakpointValue({
+        base: 1,
+        md: 2,
+        lg: 3,
+    }, { ssr: false });
+    console.log(columnCount);
 
-    const rowCount = Math.ceil(data.length / columnCount);
+    const height = useBreakpointValue({
+        base: 450,
+        md: 420,
+        xl: 400,
+    }, { ssr: false })
+
+    const rowCount = Math.ceil(data.length / columnCount!);
 
     const virtualizer = useWindowVirtualizer({
         count: rowCount,
-        estimateSize: () => 25,
-        overscan: 12,
+        estimateSize: () => height!,
+        overscan: columnCount! * 4,
         scrollMargin: listRef.current?.offsetTop ?? 0,
-    })
+        gap: 16,
+    });
+
+    useEffect(() => virtualizer.measure(), [columnCount, height, data.length]);
     return (
         <div ref={listRef} className="p-2">
             <div
@@ -44,7 +59,7 @@ function Index() {
             >
                 {virtualizer.getVirtualItems().map((item) => {
                     return [...Array(columnCount)].map((_, columnIndex) => {
-                        const index = item.index * columnCount + columnIndex;
+                        const index = item.index * columnCount! + columnIndex;
                         if (index >= data.length) {
                             return null; // Don't render if index is out of range
                         }
@@ -54,13 +69,13 @@ function Index() {
                                 style={{
                                     position: 'absolute',
                                     top: 0,
-                                    left: `${(100 / columnCount) * columnIndex}%`,
-                                    width: `${100 / columnCount}%`,
+                                    left: `${(100 / columnCount!) * columnIndex}%`,
+                                    width: `${100 / columnCount!}%`,
                                     height: `${item.size}px`,
                                     transform: `translateY(${item.start}px)`,
                                 }}
                             >
-                                Item {index}: <Link to="/tripDetails/$tripId" params={{ tripId: data[index].id }} >{data[index].title}</Link>
+                                <TripCard trip={data[index]} />
                             </div>
                         );
                     });
