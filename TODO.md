@@ -4,7 +4,7 @@
 - [x] setup routing in application,
 - [x] add API call to JSON Server,
 - [x] add Cache,
-- [ ] add Virtualization,
+- [x] add Virtualization,
 - [ ] add chakra-ui,
 - [ ] build card component for main page,
 - [ ] build details page,
