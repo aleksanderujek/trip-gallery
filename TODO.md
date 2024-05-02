@@ -1,0 +1,13 @@
+# TODO list
+- [x] deploy to Vercel,
+- [ ] add ADR for decisions,
+- [ ] setup routing in application,
+- [ ] add API call to JSON Server,
+- [ ] add Virtualization,
+- [ ] add chakra-ui,
+- [ ] build card component for main page,
+- [ ] build details page,
+- [ ] check RWD between pages,
+- [ ] add theme preference,
+- [ ] adjust readme file with run settings & screenshots,
+- [ ] add link to deployed version,
