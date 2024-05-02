@@ -1,9 +1,9 @@
 # TODO list
 - [x] deploy to Vercel,
-- [ ] add ADR for decisions,
-- [ ] setup routing in application,
-- [ ] add API call to JSON Server,
-- [ ] add Cache,
+- [x] add ADR for decisions,
+- [x] setup routing in application,
+- [x] add API call to JSON Server,
+- [x] add Cache,
 - [ ] add Virtualization,
 - [ ] add chakra-ui,
 - [ ] build card component for main page,

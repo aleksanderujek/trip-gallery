@@ -21,5 +21,5 @@ export const Route = createFileRoute('/tripDetails/$tripId')({
 function TripDetails() {
     const data = Route.useLoaderData();
     console.log(data);
-    return <div className="p-2">Hello from About!</div>
+    return <div className="p-2">Hello from {data.title}!</div>
 }
