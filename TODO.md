@@ -3,6 +3,7 @@
 - [ ] add ADR for decisions,
 - [ ] setup routing in application,
 - [ ] add API call to JSON Server,
+- [ ] add Cache,
 - [ ] add Virtualization,
 - [ ] add chakra-ui,
 - [ ] build card component for main page,
