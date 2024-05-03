@@ -6,7 +6,7 @@
 - [x] add Cache,
 - [x] add Virtualization,
 - [x] add chakra-ui,
-- [ ] build card component for main page,
+- [x] build card component for main page,
 - [ ] build details page,
 - [ ] check RWD between pages,
 - [ ] add theme preference,

@@ -2,9 +2,10 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
 import { useEffect, useRef } from 'react';
 import TripCard from '../components/TripCard';
-import { useBreakpointValue } from '@chakra-ui/react';
+import { Box, useBreakpointValue } from '@chakra-ui/react';
+import { Trip } from '../models/trip';
 
-const fetchTrips = async () => {
+const fetchTrips = async (): Promise<Trip[]> => {
     const response = await fetch(
         "https://trip-gallery-json-server.vercel.app/trips"
     );
@@ -29,7 +30,6 @@ function Index() {
         md: 2,
         lg: 3,
     }, { ssr: false });
-    console.log(columnCount);
 
     const height = useBreakpointValue({
         base: 450,
@@ -38,6 +38,9 @@ function Index() {
     }, { ssr: false })
 
     const rowCount = Math.ceil(data.length / columnCount!);
+
+    const advantage = data.map(trip => trip.advantages.length).reduce((a, b) => a > b ? a : b, 0);
+    console.log(advantage);
 
     const virtualizer = useWindowVirtualizer({
         count: rowCount,
@@ -49,7 +52,7 @@ function Index() {
 
     useEffect(() => virtualizer.measure(), [columnCount, height, data.length]);
     return (
-        <div ref={listRef} className="p-2">
+        <div ref={listRef}>
             <div
                 style={{
                     height: `${virtualizer.getTotalSize()}px`,
