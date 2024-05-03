@@ -1,7 +1,9 @@
-import { Box, Card, Grid, GridItem, Heading, Image, Link, ListItem, SimpleGrid, Stack, StackDivider, Text, UnorderedList } from '@chakra-ui/react';
+import { Box, Card, Flex, Grid, GridItem, Heading, Image, Link, ListItem, SimpleGrid, Stack, StackDivider, Text, UnorderedList } from '@chakra-ui/react';
 import { createFileRoute, Link as RouterLink } from '@tanstack/react-router'
 import { Trip } from '../../models/trip';
 import AdvantageSection from '../../components/AdvantageSection';
+import { emissionFormatter } from '../../utils/emissionFormatter';
+import pluralize from '../../utils/pluralize';
 
 const fetchTripDetails = async (tripId: string): Promise<Trip> => {
     const response = await fetch(
@@ -39,10 +41,10 @@ function TripDetails() {
                 <GridItem colSpan={[6, 6, 6, 2]}>
                     <Card p={4} display={"block"}>
                         <Stack divider={<StackDivider />} spacing='4'>
-                            <Box>
-                                <Heading as="h3" size="md">{trip.days} days</Heading>
-                                <Text>Emissions: {trip.co2kilograms}</Text>
-                            </Box>
+                            <Flex gap={4} flexDir="column">
+                                <Heading as="h3" size="lg">{pluralize(trip.days, 'day')}</Heading>
+                                <Text fontWeight="600" fontSize="sm">Emissions: {emissionFormatter(trip.co2kilograms)} CO<Text fontSize="sm" as={"sub"} textAlign="right" fontWeight={600}>2</Text>e</Text>
+                            </Flex>
                             <Box>
                                 <Heading as="h6" size={"sm"}>Countries included:</Heading>
                                 <Box p={2}>

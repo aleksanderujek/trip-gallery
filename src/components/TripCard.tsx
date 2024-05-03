@@ -2,17 +2,14 @@ import { Box, Button, Card, Flex, Heading, Text } from "@chakra-ui/react";
 import { Trip } from "../models/trip";
 import { Link } from "@tanstack/react-router";
 import { StarIcon } from "@chakra-ui/icons";
+import { emissionFormatter } from "../utils/emissionFormatter";
+import pluralize from "../utils/pluralize";
 
 type TripCardProps = {
     trip: Trip;
 }
 
-function pluralize(count: number, singular: string, plural = `${singular}s`): string {
-    return `${count} ${count === 1 ? singular : plural}`;
-}
-
 export default function TripCard({ trip }: TripCardProps) {
-    const emission = trip.co2kilograms >= 1000 ? `${(trip.co2kilograms / 1000).toFixed(2)}t` : `${trip.co2kilograms.toFixed(0)}kg`;
 
     return (
         <Card margin="auto" p={4} bg="white" width="95%" height="100%">
@@ -26,7 +23,7 @@ export default function TripCard({ trip }: TripCardProps) {
                     <Box borderRadius="md" width='80%' bg="#151a2e" color="white" maxWidth="80%" p={4}>
                         <Flex justifyContent="space-between" gap={2} alignItems="baseline" >
                             <Heading as="h6" size="sm">Emissions offset:</Heading>
-                            <Text fontWeight="600" fontSize="sm" textAlign="right">{emission} CO<Text fontSize="sm" as={"sub"} textAlign="right" fontWeight={600}>2</Text>e</Text>
+                            <Text fontWeight="600" fontSize="sm" textAlign="right">{emissionFormatter(trip.co2kilograms)} CO<Text fontSize="sm" as={"sub"} textAlign="right" fontWeight={600}>2</Text>e</Text>
                         </Flex>
                     </Box>
                     <Box width='80%' bg="white" color="#151a2e" borderTopRadius="md" maxWidth="80%" margin="auto" p={4}>
