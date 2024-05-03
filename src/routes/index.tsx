@@ -1,8 +1,8 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
 import { useEffect, useRef } from 'react';
 import TripCard from '../components/TripCard';
-import { Box, useBreakpointValue } from '@chakra-ui/react';
+import { useBreakpointValue } from '@chakra-ui/react';
 import { Trip } from '../models/trip';
 
 const fetchTrips = async (): Promise<Trip[]> => {

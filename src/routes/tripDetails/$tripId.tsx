@@ -64,7 +64,7 @@ function TripDetails() {
                         <Box>
                             <Heading as="h3" size="md" mb={8}>Overview</Heading>
                             <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-                                {trip.advantages.map((advantage, index) => (
+                                {trip.advantages.map((advantage) => (
                                     <AdvantageSection key={advantage.title} advantage={advantage} />
                                 ))}
                             </SimpleGrid>
