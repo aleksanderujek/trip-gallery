@@ -4,7 +4,7 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 export const Route = createRootRoute({
     component: () => (
-        <Box p={2}>
+        <Box p={6}>
             <Outlet />
             <TanStackRouterDevtools />
         </Box>

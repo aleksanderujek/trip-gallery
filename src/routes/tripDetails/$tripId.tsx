@@ -1,6 +1,7 @@
-import { Box, Card, CardBody, CardHeader, Grid, Heading, Image, Link, List, ListItem, SimpleGrid, Stack, StackDivider, Text, UnorderedList } from '@chakra-ui/react';
+import { Box, Card, Grid, GridItem, Heading, Image, Link, ListItem, SimpleGrid, Stack, StackDivider, Text, UnorderedList } from '@chakra-ui/react';
 import { createFileRoute, Link as RouterLink } from '@tanstack/react-router'
 import { Trip } from '../../models/trip';
+import AdvantageSection from '../../components/AdvantageSection';
 
 const fetchTripDetails = async (tripId: string): Promise<Trip> => {
     const response = await fetch(
@@ -22,38 +23,57 @@ export const Route = createFileRoute('/tripDetails/$tripId')({
 
 function TripDetails() {
     const trip = Route.useLoaderData();
-    console.log(trip);
     return (
         <>
             <Box>
-                <Link as={RouterLink} to="/">Go Back</Link>
+                <Link as={RouterLink} to="/" textDecoration="underline" color={"gray.500"}>Go Back</Link>
             </Box>
-            <Stack mt={8} gap={2}>
+            <Stack mt={8} mb={8} gap={2}>
                 <Heading>{trip.title}</Heading>
-                <Text>{trip.subtitle}</Text>
+                <Text color="gray.500">{trip.subtitle}</Text>
             </Stack>
-            <SimpleGrid columns={2} gap={2}>
-                <Image src={trip.photoUrl} alt={trip.title} />
-                <Card>
-                    <Stack divider={<StackDivider />} spacing='4'>
-                        <CardHeader>
-                            <Heading as="h3" size="md">{trip.days} days</Heading>
-                            <Text>Emissions: {trip.co2kilograms}</Text>
-                        </CardHeader>
-                        <CardBody>
-                            <Heading as="h6" size={"sm"}>Countries</Heading>
-                            {/* render items as two column unordered list */}
-                            <UnorderedList>
-                                <SimpleGrid columns={2}>
-                                    {trip.countries.map((country) => (
-                                        <ListItem key={country}>{country}</ListItem>
-                                    ))}
-                                </SimpleGrid>
-                            </UnorderedList>
-                        </CardBody>
+            <Grid templateColumns='repeat(6, 1fr)' gap={8}>
+                <GridItem colSpan={[6, 6, 6, 4]}>
+                    <Image src={trip.photoUrl} width="100%" height={400} objectFit="cover" borderRadius={12} alt={trip.title} />
+                </GridItem>
+                <GridItem colSpan={[6, 6, 6, 2]}>
+                    <Card p={4} display={"block"}>
+                        <Stack divider={<StackDivider />} spacing='4'>
+                            <Box>
+                                <Heading as="h3" size="md">{trip.days} days</Heading>
+                                <Text>Emissions: {trip.co2kilograms}</Text>
+                            </Box>
+                            <Box>
+                                <Heading as="h6" size={"sm"}>Countries included:</Heading>
+                                <Box p={2}>
+
+                                    <UnorderedList>
+                                        <SimpleGrid columns={2}>
+                                            {trip.countries.map((country) => (
+                                                <ListItem key={country}>{country}</ListItem>
+                                            ))}
+                                        </SimpleGrid>
+                                    </UnorderedList>
+                                </Box>
+                            </Box>
+                        </Stack>
+                    </Card>
+                </GridItem>
+                <GridItem colSpan={[6, 6, 6, 4]}>
+                    <Stack mt={8} divider={<StackDivider />} spacing={8}>
+                        <Box>
+                            <Heading as="h3" size="md" mb={8}>Overview</Heading>
+                            <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+                                {trip.advantages.map((advantage, index) => (
+                                    <AdvantageSection key={advantage.title} advantage={advantage} />
+                                ))}
+                            </SimpleGrid>
+                        </Box>
+                        <Text>{trip.description}</Text>
                     </Stack>
-                </Card>
-            </SimpleGrid>
+                </GridItem>
+            </Grid>
+
         </>
 
     )
