@@ -8,13 +8,7 @@ const newTheme = {
           backgroundColor: '#f6f6f7'
         },
       },
-      colors: {
-        gallery: '#151a2e'
-      }
     },
-    colors: {
-        gallery: '#151a2e'
-    }
   }
   
 export const theme = extendTheme(newTheme);

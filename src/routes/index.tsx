@@ -32,15 +32,12 @@ function Index() {
     }, { ssr: false });
 
     const height = useBreakpointValue({
-        base: 450,
-        md: 420,
+        base: 430,
+        md: 430,
         xl: 400,
     }, { ssr: false })
 
     const rowCount = Math.ceil(data.length / columnCount!);
-
-    const advantage = data.map(trip => trip.advantages.length).reduce((a, b) => a > b ? a : b, 0);
-    console.log(advantage);
 
     const virtualizer = useWindowVirtualizer({
         count: rowCount,
@@ -51,6 +48,7 @@ function Index() {
     });
 
     useEffect(() => virtualizer.measure(), [columnCount, height, data.length]);
+
     return (
         <div ref={listRef}>
             <div
