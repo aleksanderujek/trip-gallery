@@ -5,7 +5,6 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
 import { ChakraProvider } from '@chakra-ui/react'
-import "./index.css"
 import { theme } from './theme/theme'
 
 // Create a new router instance
