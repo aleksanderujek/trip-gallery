@@ -46,7 +46,7 @@ function TripDetails() {
                                 <Text fontWeight="600" fontSize="sm">Emissions: {emissionFormatter(trip.co2kilograms)} CO<Text fontSize="sm" as={"sub"} textAlign="right" fontWeight={600}>2</Text>e</Text>
                             </Flex>
                             <Box>
-                                <Heading as="h6" size={"sm"}>Countries included:</Heading>
+                                <Heading as="h6" size={"sm"}>{trip.countries.length === 1 ? 'Country' : 'Countries'} included:</Heading>
                                 <Box p={2}>
 
                                     <UnorderedList>

@@ -1,10 +1,14 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const customTheme = {
+  colors: {
+    'custom-navy': '#151a2e',
+  },
   styles: {
     global: {
       'html, body': {
-        color: '#151a2e',
+        color: 'custom-navy',
+        '--chakra-colors-chakra-body-text': 'custom-navy',
         backgroundColor: '#f6f6f7'
       },
     },
