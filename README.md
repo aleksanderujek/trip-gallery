@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# Trip Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vite application using Bun and ChakraUI to visualize trips data.
 
-Currently, two official plugins are available:
+## Technologies used:
+- Vite,
+- Bun,
+- ChakraUI,
+- Tanstack/Virtual,
+- Tanstack/Router,
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to run the project?
+1. Clone the repository.
+2. Install [bun](https://bun.sh/)
+3. Run `bun install`
+4. Run `bun run dev`
 
-## Expanding the ESLint configuration
+## Screenshots
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Home page
+![](screenshots/main_macbook.png)
+![](screenshots/main_iPad.png)
+![](screenshots/main_iPhones.png)
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Trip details
+![](screenshots/details_apple.png)
+![](screenshots/details_macbook.png)
