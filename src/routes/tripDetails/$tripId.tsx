@@ -6,6 +6,10 @@ import { emissionFormatter } from '../../utils/emissionFormatter';
 import pluralize from '../../utils/pluralize';
 
 const fetchTripDetails = async (tripId: string): Promise<Trip> => {
+    if (isNaN(parseInt(tripId))) {
+        throw new Error("Invalid trip ID");
+    }
+
     const response = await fetch(
         `https://trip-gallery-json-server.vercel.app/trips/${tripId}`
     );
