@@ -13,6 +13,7 @@ const router = createRouter({
   defaultPendingComponent: () => (
     <Flex justifyContent="center" alignItems="center" height="100vh">
       <Spinner
+        aria-label='Loading trips'
         thickness='4px'
         speed='0.65s'
         emptyColor='gray.200'
