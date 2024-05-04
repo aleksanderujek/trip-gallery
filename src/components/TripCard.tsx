@@ -35,6 +35,7 @@ export default function TripCard({ trip }: TripCardProps) {
                                     .map((_, i) => (
                                         <StarIcon
                                             key={i}
+                                            fontSize={["xs", "sm"]}
                                             color={i < trip.rating ? 'yellow.300' : 'gray.300'}
                                         />
                                     ))}
