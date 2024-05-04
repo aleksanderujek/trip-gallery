@@ -9,6 +9,5 @@
 - [x] build card component for main page,
 - [x] build details page,
 - [x] check RWD between pages,
-- [ ] [Optional] add theme preference,
 - [x] adjust readme file with run settings & screenshots,
-- [ ] add link to deployed version,
+- [x] add link to deployed version,

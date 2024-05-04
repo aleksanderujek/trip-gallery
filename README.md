@@ -2,6 +2,8 @@
 
 Vite application using Bun and ChakraUI to visualize trips data.
 
+Application is available at address: [trip-gallery](https://trip-gallery.vercel.app/)
+
 ## Technologies used:
 - Vite,
 - Bun,
