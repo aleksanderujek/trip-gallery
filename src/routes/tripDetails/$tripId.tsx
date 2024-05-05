@@ -1,5 +1,5 @@
-import { Box, Card, Flex, Grid, GridItem, Heading, Image, Link, ListItem, SimpleGrid, Stack, StackDivider, Text, UnorderedList } from '@chakra-ui/react';
-import { createFileRoute, Link as RouterLink } from '@tanstack/react-router'
+import { Box, Button, Card, Flex, Grid, GridItem, Heading, Image, Link, ListItem, SimpleGrid, Stack, StackDivider, Text, UnorderedList } from '@chakra-ui/react';
+import { createFileRoute, ErrorComponentProps, Link as RouterLink } from '@tanstack/react-router'
 import { Trip } from '../../models/trip';
 import AdvantageSection from '../../components/AdvantageSection';
 import { emissionFormatter } from '../../utils/emissionFormatter';
@@ -23,6 +23,16 @@ export const Route = createFileRoute('/tripDetails/$tripId')({
     component: TripDetails,
     loader: ({ params }) => fetchTripDetails(params.tripId),
     loaderDeps: () => [],
+    errorComponent: (props: ErrorComponentProps) => {
+        const { error } = props as { error: Error };
+        console.error(error);
+        const message: string = error ? error.message : "An unexpected error occurred";
+        return <Box>
+            <Heading size="lg">Unexpected error</Heading>
+            <Text>{message}</Text>
+            <Button onClick={props.reset}>Reload</Button>
+        </Box>
+    },
     staleTime: Infinity,
     preloadStaleTime: Infinity,
 })
