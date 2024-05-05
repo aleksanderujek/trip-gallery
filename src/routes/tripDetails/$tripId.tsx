@@ -62,7 +62,6 @@ function TripDetails() {
                             <Box>
                                 <Heading as="h6" size={"sm"}>{trip.countries.length === 1 ? 'Country' : 'Countries'} included:</Heading>
                                 <Box p={2}>
-
                                     <UnorderedList>
                                         <SimpleGrid columns={2}>
                                             {trip.countries.map((country) => (
