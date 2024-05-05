@@ -36,7 +36,7 @@ Tests:       5 passed, 5 total
 ### Home page
 ![](screenshots/main_macbook.png)
 ![](screenshots/main_iPad.png)
-![](screenshots/main_iPhones.png)
+![](screenshots/main_apple.png)
 
 ### Trip details
 ![](screenshots/details_apple.png)
