@@ -42,7 +42,7 @@ function Index() {
     const virtualizer = useWindowVirtualizer({
         count: rowCount,
         estimateSize: () => height!,
-        overscan: columnCount! * 4,
+        overscan: columnCount!,
         scrollMargin: listRef.current?.offsetTop ?? 0,
         gap: 16,
     });
