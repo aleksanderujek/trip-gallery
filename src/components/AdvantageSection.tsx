@@ -13,7 +13,7 @@ export default function AdvantageSection({ advantage }: AdvantageSectionProps) {
         </Box>
         <Box>
             <Heading as="h6" size="md" lineHeight={8}>{advantage.title}</Heading>
-            <Text>{advantage.description}</Text>
+            <Text data-testid="advantage-description">{advantage.description}</Text>
         </Box>
     </Flex>;
 }
